@@ -196,7 +196,6 @@ console.log(basket)
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
             />
-
             <Products
                 products={products.filter(el =>
                     el.title.toLowerCase().includes(searchInput.toLowerCase())
