@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
-
 const Basket = ({basket, setBasket}) => {
-    const [totalPrice, setTotalPrice] = useState([])
-
+    const [totalPrice, setTotalPrice] = useState(0)
     const totalPrices = () => {
         let total = 0;
         basket.map(el =>
@@ -10,11 +8,10 @@ const Basket = ({basket, setBasket}) => {
         setTotalPrice(total)
     }
 
-
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         totalPrices()
-    },[basket])
+    })
 
     const plusCount = (id) => {
         setBasket(basket.map(el => {

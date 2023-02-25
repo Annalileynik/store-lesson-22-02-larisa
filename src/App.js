@@ -30,7 +30,7 @@ import SuitM from './imagesProducts/images/SuitM.png'
 import SuitT from './imagesProducts/images/SuitT.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Basket from "./components/Basket";
-import {Form} from "react-bootstrap";
+
 
 
 const initialProducts = [
@@ -213,8 +213,11 @@ function App() {
     const [basket, setBasket] = useState([])
     const [isOpen, setIsOpen] = useState(false)
     const putToBasket = (choosenProduct) => {
+        if (basket.indexOf(choosenProduct) !== -1)
+            return
         setBasket([...basket, choosenProduct])
     }
+
 
     const toggle = () => {
         setIsOpen(!isOpen)
@@ -235,12 +238,7 @@ function App() {
                 )}
                 putToBasket={putToBasket}
             />}
-
             <hr/>
-
-
-
-
 
         </div>
     );
