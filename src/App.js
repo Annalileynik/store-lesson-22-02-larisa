@@ -208,7 +208,7 @@ const initialProducts = [
 
 function App() {
 
-    const [products, setProducts] = useState(initialProducts)
+    const [products] = useState(initialProducts)
     const [searchInput, setSearchInput] = useState('')
     const [basket, setBasket] = useState([])
     const [isOpen, setIsOpen] = useState(false)
@@ -222,25 +222,24 @@ function App() {
 
     return (
         <div>
-            {isOpen ? <Basket/> : <Form/>}
-
-            <hr/>
             <Header
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
                 toggle={toggle}
             />
-            <Products
+            {isOpen ? <Basket basket={basket}
+                              setBasket={setBasket}
+            toggle={toggle}/> :<Products
                 products={products.filter(el =>
                     el.title.toLowerCase().includes(searchInput.toLowerCase())
                 )}
                 putToBasket={putToBasket}
-            />
+            />}
 
-            <Basket
-                basket={basket}
-                setBasket={setBasket}
-            />
+            <hr/>
+
+
+
 
 
         </div>
