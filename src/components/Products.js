@@ -10,9 +10,10 @@ const Products = (props) => {
         <div className="container-fluid">
             <div className="row align-items">
                 {props.products.map(el =>
-                    <Form key={el.id} product={el}
-
-                          putToBasket={props.putToBasket}/>
+                    <Form key={el.id}
+                          product={el}
+                          putToBasket={props.putToBasket}
+                              />
                 )}
             </div>
         </div>

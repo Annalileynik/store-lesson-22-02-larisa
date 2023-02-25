@@ -4,6 +4,7 @@ import Products from "./components/Products";
 import Header from "./components/Header";
 
 import {v4 as uuidv4} from 'uuid';
+
 import ShoesW from './imagesProducts/images/ShoesW.png'
 import DressC from './imagesProducts/images/DressC.png'
 import DressG from './imagesProducts/images/DressG.png'
@@ -28,6 +29,9 @@ import SuitK from './imagesProducts/images/SuitK.png'
 import SuitM from './imagesProducts/images/SuitM.png'
 import SuitT from './imagesProducts/images/SuitT.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Basket from "./components/Basket";
+import {Form} from "react-bootstrap";
+
 
 const initialProducts = [
     {
@@ -35,166 +39,196 @@ const initialProducts = [
         img: ShoesW,
         title: "shoes",
         category: 'women',
-        price: 200
+        price: 200,
+        count: 1
     }, {
         id: uuidv4(),
         img: ShoesM,
         title: "shoes",
         category: 'men',
-        price: 100
+        price: 100,
+        count: 1
     }, {
         id: uuidv4(),
         img: ShoesK,
         title: "shoes",
         category: 'kids',
-        price: 60
+        price: 60,
+        count: 1
     }, {
         id: uuidv4(),
         img: ShoesB,
         title: "shoes",
         category: 'baby',
-        price: 70
+        price: 70,
+        count: 1
     }, {
         id: uuidv4(),
         img: DressW,
         title: "dress",
         category: 'women',
-        price: 200
+        price: 200,
+        count: 1
     }, {
         id: uuidv4(),
         img: DressG,
         title: "dress",
         category: 'girl',
-        price: 70
+        price: 70,
+        count: 1
     }, {
         id: uuidv4(),
         img: DressT,
         title: "dress",
         category: 'teen',
-        price: 150
+        price: 150,
+        count: 1
     }, {
         id: uuidv4(),
         img: DressC,
         title: "dress",
         category: 'women',
-        price: 300
+        price: 300,
+        count: 1
     }, {
         id: uuidv4(),
         img: SkirtW,
         title: "suit",
         category: 'women',
-        price: 500
+        price: 500,
+        count: 1
     }, {
         id: uuidv4(),
         img: SuitM,
         title: "suit",
         category: 'men',
-        price: 700
+        price: 700,
+        count: 1
     }, {
         id: uuidv4(),
         img: SuitT,
         title: "suit",
         category: 'teen',
-        price: 100
+        price: 100,
+        count: 1
     }, {
         id: uuidv4(),
         img: SuitK,
         title: "suit",
         category: 'kids',
-        price: 320
+        price: 320,
+        count: 1
     }, {
         id: uuidv4(),
         img: SuitB,
         title: "suit",
         category: 'baby',
-        price: 150
+        price: 150,
+        count: 1
     }, {
         id: uuidv4(),
         img: SuitC,
         title: "suit",
         category: 'women',
-        price: 800
+        price: 800,
+        count: 1
     }, {
         id: uuidv4(),
         img: SkirtB,
         title: "skirt",
         category: 'baby',
-        price: 90
+        price: 90,
+        count: 1
     }, {
         id: uuidv4(),
         img: SkirtW,
         title: "skirt",
         category: 'women',
-        price: 80
+        price: 80,
+        count: 1
     }, {
         id: uuidv4(),
         img: SkirtG,
         title: "skirt",
         category: 'girl',
-        price: 70
+        price: 70,
+        count: 1
     }, {
         id: uuidv4(),
         img: SkirtB2,
         title: "skirt",
         category: 'baby',
-        price: 60
+        price: 60,
+        count: 1
     }, {
         id: uuidv4(),
         img: PantsW,
         title: "pants",
         category: 'women',
-        price: 300
+        price: 300,
+        count: 1
     }, {
         id: uuidv4(),
         img: PantsM,
         title: "pants",
         category: 'men',
-        price: 150
+        price: 150,
+        count: 1
     }, {
         id: uuidv4(),
         img: PantsK,
         title: "pants",
         category: 'kids',
-        price: 90
+        price: 90,
+        count: 1
     }, {
         id: uuidv4(),
         img: PantsB,
         title: "pants",
         category: 'baby',
-        price: 60
+        price: 60,
+        count: 1
     }, {
         id: uuidv4(),
         img: PantsT,
         title: "pants",
         category: 'teen',
-        price: 80
+        price: 80,
+        count: 1
     }, {
         id: uuidv4(),
         img: PantsB2,
         title: "pants",
         category: 'baby',
-        price: 50
+        price: 50,
+        count: 1
     }
 ]
 
 
 function App() {
 
-
     const [products, setProducts] = useState(initialProducts)
     const [searchInput, setSearchInput] = useState('')
-    const [basket, setBasket]=useState([])
-
+    const [basket, setBasket] = useState([])
+    const [isOpen, setIsOpen] = useState(false)
     const putToBasket = (choosenProduct) => {
         setBasket([...basket, choosenProduct])
     }
-console.log(basket)
+
+    const toggle = () => {
+        setIsOpen(!isOpen)
+    }
 
     return (
         <div>
+            {isOpen ? <Basket/> : <Form/>}
+
+            <hr/>
             <Header
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
+                toggle={toggle}
             />
             <Products
                 products={products.filter(el =>
@@ -203,7 +237,14 @@ console.log(basket)
                 putToBasket={putToBasket}
             />
 
+            <Basket
+                basket={basket}
+                setBasket={setBasket}
+            />
+
+
         </div>
     );
 }
+
 export default App;
