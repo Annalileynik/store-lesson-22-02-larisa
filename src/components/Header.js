@@ -4,7 +4,7 @@ const Header = (props) => {
 console.log(props)
     return (
         <div>
-         <button className="me-md-2">
+         <button onClick={props.toggle} className="me-md-2">
              <img src='https://tse3.mm.bing.net/th?id=OIP.Ui-5abj2avrunNRnQewKXQHaHa&pid=Api&P=0' width={70} height={25}/>
          </button>
              <button onClick={props.toggle} style={{float:'right'}}>
