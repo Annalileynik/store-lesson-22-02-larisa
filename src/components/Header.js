@@ -5,7 +5,7 @@ console.log(props)
     return (
         <div>
          <button onClick={props.toggle} className="me-md-2">
-             <img alt='image' src='https://tse3.mm.bing.net/th?id=OIP.Ui-5abj2avrunNRnQewKXQHaHa&pid=Api&P=0' width={70} height={25}/>
+             <img alt='img' src='https://tse3.mm.bing.net/th?id=OIP.Ui-5abj2avrunNRnQewKXQHaHa&pid=Api&P=0' width={70} height={25}/>
          </button>
              <button onClick={props.toggle} style={{float:'right'}}>
              <i className="fas fa-cart-plus"> </i>
